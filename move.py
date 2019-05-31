@@ -1,18 +1,13 @@
 import RPi.GPIO as GPIO
 import time
-import firebase
-from firebase import firebase as fire
 
-firebase = firebase.FirebaseApplication('https://makers2018-e66f3.firebaseio.com', None)  # Firebase implemented
-result = firebase.get('path/', None)  # Get a value from a node
-import RPI.GPIO as GPIO
-
-servoPIN = 33
-GPIO.setmode(GPIO.BCM)
+servoPIN = 12
+GPIO.setmode(GPIO.BOARD)
 GPIO.setup(servoPIN, GPIO.OUT)
+GPIO.setwarnings(False)
 
 p = GPIO.PWM(servoPIN, 50) # GPIO 17 for PWM with 50Hz
-p.start(2.5) # Initialization
+p.start(7.5) # Initialization
 try:
   while True:
     p.ChangeDutyCycle(5)
