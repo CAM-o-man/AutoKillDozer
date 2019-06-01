@@ -89,9 +89,11 @@ def control():
 		pi.set_servo_pulsewidth(ESC, speed)
 		# inp = input()
 		forward = db.child("fwd").get().val()
-		backward = db.child("bwd").get.val()
-		print(forward)
-		print("Backward: " + backward)
+		backward = db.child("bwd").get().val()
+		speedMod = db.child("speed").get().val()
+		print("Forward: {}".format(forward))
+		print("Backward: {}".format(backward))
+		print("SpeedMod: {}".format(speedMod))
 		# if inp == "q":
 		# 	speed -= 100    # decrementing the speed like hell
 		# 	print("speed = %d" % speed)
@@ -115,12 +117,12 @@ def control():
 		# 	break
 		if forward:
 			print("In if")
-			speed = 1400  # Going forward
+			speed = 1500 - speedMod  # Going forward
 			print("Changed speed")
 			continue
 		elif backward:
 			print("In if\"Backwards\"")
-			speed = 1550  # Going backward
+			speed = 1550 - speedMod  # Going backward
 			print("Changed speed \"Backwards\"")
 			continue
 		else:
@@ -146,7 +148,8 @@ def stop():  # This will stop every action your Pi is performing for ESC ofcours
 	pi.stop()
 
 
-# This is the start of the program actually, to start the function it needs to be initialized before calling... stupid python.
+# This is the start of the program actually, to start the function it needs to be initialized before calling...
+# stupid python.
 inp = input()
 if inp == "manual":
 	manual_drive()

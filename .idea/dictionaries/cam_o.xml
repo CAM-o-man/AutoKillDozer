@@ -2,6 +2,8 @@
   <dictionary name="cam-o">
     <words>
       <w>gpio</w>
+      <w>hough</w>
+      <w>ofcourse</w>
     </words>
   </dictionary>
 </component>
